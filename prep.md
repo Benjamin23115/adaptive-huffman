@@ -3,7 +3,6 @@
 ## Overview
 
 The Adaptive Huffman algorithm maintains an evolving Huffman tree to efficiently encode and decode data as it changes over time. The algorithm works as follows:
-The Adaptive Huffman algorithm should have the following functions:
 
 ### Initialization
 
@@ -27,8 +26,6 @@ The Adaptive Huffman algorithm should have the following functions:
 - Outputting the encoded data is the final step in compression, providing a compact representation of the input data.
 
 - Decompression uses a similar tree-building process, allowing the compressed data to be decoded.
-
-By following these steps, you can implement the Adaptive Huffman algorithm for data compression effectively.
 
 ## Decoding Steps
 
