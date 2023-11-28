@@ -1,4 +1,4 @@
-#include "adaptive-huffman.h"
+#include "adaptive_huffman.h"
 #include <bitset>
 #include <string>
 using namespace std;
@@ -129,7 +129,6 @@ std::string AdaptiveHuffman::encode(const std::string input)
 {
     // Clear the previous encoded message
     encodedMessage.clear();
-
     for (char c : input)
     {
         // Process each character in the input
@@ -180,7 +179,7 @@ std::string AdaptiveHuffman::decode(const std::string input)
     // Clear the previous decoded message
     decodedMessage.clear();
 
-    Node* currentNode = root;
+    Node *currentNode = root;
 
     for (char bit : input)
     {
@@ -214,4 +213,3 @@ std::string AdaptiveHuffman::getDecodedMessage() const
 {
     return decodedMessage;
 }
-

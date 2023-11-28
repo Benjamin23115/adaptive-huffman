@@ -1,4 +1,4 @@
-#include "adaptive-huffman.h"
+#include "adaptive_huffman.h"
 #include <iostream>
 #include <fstream>
 
