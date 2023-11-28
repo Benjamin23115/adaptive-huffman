@@ -125,9 +125,11 @@ void AdaptiveHuffman::deleteTree(Node *node)
     }
 }
 
-void AdaptiveHuffman::encode(const string &input)
+std::string AdaptiveHuffman::encode(const std::string input)
 {
-    string encodedString;
+    // Clear the previous encoded message
+    encodedMessage.clear();
+
     for (char c : input)
     {
         // Process each character in the input
@@ -140,11 +142,11 @@ void AdaptiveHuffman::encode(const string &input)
         {
             if (currentNode->parent->left == currentNode)
             {
-                encodedString += '0';
+                encodedMessage += '0';
             }
             else
             {
-                encodedString += '1';
+                encodedMessage += '1';
             }
             currentNode = currentNode->parent;
         }
@@ -154,21 +156,32 @@ void AdaptiveHuffman::encode(const string &input)
         {
             if (escapeNode->parent->left == escapeNode)
             {
-                encodedString += '0';
+                encodedMessage += '0';
             }
             else
             {
-                encodedString += '1';
+                encodedMessage += '1';
             }
             escapeNode = escapeNode->parent;
         }
     }
+
+    return encodedMessage;
 }
 
-void AdaptiveHuffman::decode(const string &input)
+// Add the implementation for getEncodedMessage
+std::string AdaptiveHuffman::getEncodedMessage() const
 {
-    string decodedString;
-    Node *currentNode = root;
+    return encodedMessage;
+}
+
+std::string AdaptiveHuffman::decode(const std::string input)
+{
+    // Clear the previous decoded message
+    decodedMessage.clear();
+
+    Node* currentNode = root;
+
     for (char bit : input)
     {
         if (bit == '0')
@@ -183,7 +196,7 @@ void AdaptiveHuffman::decode(const string &input)
         if (currentNode->left == nullptr && currentNode->right == nullptr)
         {
             // Leaf node reached, output the decoded character
-            cout << currentNode->data;
+            decodedMessage += currentNode->data;
 
             // Update the tree to reflect the new information
             updateTree(currentNode->data);
@@ -192,4 +205,13 @@ void AdaptiveHuffman::decode(const string &input)
             currentNode = root;
         }
     }
+
+    return decodedMessage;
 }
+
+// Add the implementation for getDecodedMessage
+std::string AdaptiveHuffman::getDecodedMessage() const
+{
+    return decodedMessage;
+}
+

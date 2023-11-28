@@ -59,6 +59,7 @@ int main(int argc, char const *argv[])
         else
         {
             cout << "Error: Unable to open alphabet file." << endl;
+            return -1;
         }
         alphabetFile.close();
 
@@ -76,11 +77,12 @@ int main(int argc, char const *argv[])
         else
         {
             cout << "Error: Unable to open input message file." << endl;
+            return -1;
         }
         textFile.close();
 
-        // Encode the message
-        adaptiveHuffman.encode(message);
+        // Encode the message and store the result in the 'encoded' variable
+        encoded = adaptiveHuffman.encode(message);
         cout << "message encoded: " << encoded;
 
         // Output the encoded message to a file
@@ -92,6 +94,7 @@ int main(int argc, char const *argv[])
         }
         textFile.close();
     }
+
     // Decode operation
     else if (commandArg == "decode")
     {
@@ -104,6 +107,7 @@ int main(int argc, char const *argv[])
         else
         {
             cout << "Error: Unable to open alphabet file." << endl;
+            return -1;
         }
         alphabetFile.close();
 
@@ -121,11 +125,13 @@ int main(int argc, char const *argv[])
         else
         {
             cout << "Error: Unable to open encoded message file." << endl;
+            return -1;
         }
         textFile.close();
 
-        // Decode the message
-        adaptiveHuffman.decode(message);
+        // Decode the message and store the result in the 'decoded' variable
+        decoded = adaptiveHuffman.decode(message);
+        cout << "message decoded: " << decoded;
 
         // Output the decoded message to a file
         int extensionLen = 8;
@@ -138,6 +144,7 @@ int main(int argc, char const *argv[])
         }
         textFile.close();
     }
+
     else
     {
         cout << "Invalid command. Use 'encode' or 'decode'." << endl;

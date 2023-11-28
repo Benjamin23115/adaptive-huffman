@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 struct Node
 {
@@ -21,12 +22,16 @@ public:
     AdaptiveHuffman();
     ~AdaptiveHuffman();
 
-    void encode(const std::string &input);
-    void decode(const std::string &input);
+    std::string encode(const std::string input);
+    std::string decode(const std::string input);
+    std::string getEncodedMessage() const;
+    std::string getDecodedMessage() const;
 
 private:
     Node *root;
     std::vector<Node *> nodes;
+    std::string encodedMessage;
+    std::string decodedMessage;
 
     void initializeTree();
     void updateTree(char newChar);
