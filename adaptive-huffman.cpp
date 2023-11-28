@@ -125,7 +125,7 @@ void AdaptiveHuffman::deleteTree(Node *node)
     }
 }
 
-string AdaptiveHuffman::encode(const string input)
+void AdaptiveHuffman::encode(const string &input)
 {
     string encodedString;
     for (char c : input)
@@ -163,10 +163,9 @@ string AdaptiveHuffman::encode(const string input)
             escapeNode = escapeNode->parent;
         }
     }
-    return encodedString;
 }
 
-string AdaptiveHuffman::decode(const string input)
+void AdaptiveHuffman::decode(const string &input)
 {
     string decodedString;
     Node *currentNode = root;
@@ -193,5 +192,4 @@ string AdaptiveHuffman::decode(const string input)
             currentNode = root;
         }
     }
-    return decodedString;
 }

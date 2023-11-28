@@ -80,7 +80,8 @@ int main(int argc, char const *argv[])
         textFile.close();
 
         // Encode the message
-        encoded = adaptiveHuffman.encode(message);
+        adaptiveHuffman.encode(message);
+        cout << "message encoded: " << encoded;
 
         // Output the encoded message to a file
         messageArg += ".encoded";
@@ -124,7 +125,7 @@ int main(int argc, char const *argv[])
         textFile.close();
 
         // Decode the message
-        decoded = adaptiveHuffman.decode(message);
+        adaptiveHuffman.decode(message);
 
         // Output the decoded message to a file
         int extensionLen = 8;
