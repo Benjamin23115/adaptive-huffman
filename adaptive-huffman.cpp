@@ -1,5 +1,6 @@
 #include "adaptive-huffman.h"
 #include <bitset>
+#include <string>
 using namespace std;
 
 Node::Node(char d, int freq, Node *l, Node *r, Node *p)

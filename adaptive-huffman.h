@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
 
 struct Node {
     char data;
@@ -19,8 +20,8 @@ public:
     AdaptiveHuffman();
     ~AdaptiveHuffman();
 
-    string encode(const std::string input);
-    string decode(const std::string input);
+    std::string encode(const std::string input);
+    std::string decode(const std::string input);
 
 private:
     Node* root;

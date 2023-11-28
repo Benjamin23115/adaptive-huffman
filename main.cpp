@@ -47,9 +47,6 @@ int main(int argc, char const *argv[])
         encodedArg = argv[3];
     }
 
-    // Print the alphabet file argument
-    cout << "Alphabet: " << alphabetArg << endl;
-
     // Encode operation
     if (commandArg == "encode")
     {
