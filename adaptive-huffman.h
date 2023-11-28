@@ -19,8 +19,8 @@ public:
     AdaptiveHuffman();
     ~AdaptiveHuffman();
 
-    void encode(const std::string& input);
-    void decode(const std::string& input);
+    string encode(const std::string input);
+    string decode(const std::string input);
 
 private:
     Node* root;

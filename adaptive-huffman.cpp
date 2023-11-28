@@ -124,8 +124,9 @@ void AdaptiveHuffman::deleteTree(Node *node)
     }
 }
 
-void AdaptiveHuffman::encode(const string &input)
+string AdaptiveHuffman::encode(const string input)
 {
+    string encodedString;
     for (char c : input)
     {
         // Process each character in the input
@@ -138,11 +139,11 @@ void AdaptiveHuffman::encode(const string &input)
         {
             if (currentNode->parent->left == currentNode)
             {
-                cout << "0";
+                encodedString += '0';
             }
             else
             {
-                cout << "1";
+                encodedString += '1';
             }
             currentNode = currentNode->parent;
         }
@@ -152,19 +153,21 @@ void AdaptiveHuffman::encode(const string &input)
         {
             if (escapeNode->parent->left == escapeNode)
             {
-                cout << "0";
+                encodedString += '0';
             }
             else
             {
-                cout << "1";
+                encodedString += '1';
             }
             escapeNode = escapeNode->parent;
         }
     }
+    return encodedString;
 }
 
-void AdaptiveHuffman::decode(const string &input)
+string AdaptiveHuffman::decode(const string input)
 {
+    string decodedString;
     Node *currentNode = root;
     for (char bit : input)
     {
@@ -189,4 +192,5 @@ void AdaptiveHuffman::decode(const string &input)
             currentNode = root;
         }
     }
+    return decodedString;
 }

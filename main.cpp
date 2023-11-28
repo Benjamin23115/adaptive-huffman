@@ -8,7 +8,6 @@ const int maxArguments = 4;
 
 int main(int argc, char const *argv[])
 {
-    // Create an instance of AdaptiveHuffman
     AdaptiveHuffman adaptiveHuffman;
 
     // File streams for reading and writing
@@ -70,9 +69,11 @@ int main(int argc, char const *argv[])
         textFile.open(messageArg, ios::in);
         if (textFile.is_open())
         {
-            while (getline(textFile, message))
+            message.clear();
+            string line;
+            while (getline(textFile, line))
             {
-                // Concatenate each line to the message string if needed
+                message += line;
             }
         }
         else
@@ -81,14 +82,8 @@ int main(int argc, char const *argv[])
         }
         textFile.close();
 
-        // Create an AdaptiveHuffman encoder with the specified alphabet
-        AdaptiveHuffman encoder(alphabet);
-
         // Encode the message
-        encoded = encoder.encode(message);
-
-        // Print the encoded message
-        cout << "Encoded Message: " << encoded << endl;
+        encoded = adaptiveHuffman.encode(message);
 
         // Output the encoded message to a file
         messageArg += ".encoded";
@@ -118,9 +113,11 @@ int main(int argc, char const *argv[])
         textFile.open(encodedArg, ios::in);
         if (textFile.is_open())
         {
-            while (getline(textFile, message))
+            message.clear();
+            string line;
+            while (getline(textFile, line))
             {
-                // Concatenate each line to the message string if needed
+                message += line;
             }
         }
         else
@@ -129,14 +126,8 @@ int main(int argc, char const *argv[])
         }
         textFile.close();
 
-        // Create an AdaptiveHuffman decoder with the specified alphabet
-        AdaptiveHuffman decoder(alphabet);
-
         // Decode the message
-        decoded = decoder.decode(message);
-
-        // Print the decoded message
-        cout << "Decoded Message: " << decoded << endl;
+        decoded = adaptiveHuffman.decode(message);
 
         // Output the decoded message to a file
         int extensionLen = 8;
